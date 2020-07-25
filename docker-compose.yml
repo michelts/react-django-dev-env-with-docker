@@ -4,6 +4,7 @@ services:
     build: .
     volumes:
       - ./backend:/srv/backend/
+      - ./bundles:/srv/bundles/
     ports:
       - "8000:8000"
     command: sh -c "./manage.py migrate && ./manage.py runserver 0.0.0.0:8000"
@@ -14,6 +15,7 @@ services:
       target: front
     volumes:
       - ./frontend:/srv/frontend/
+      - ./bundles:/srv/bundles/
     ports:
       - "3000:3000"
     tty: true
