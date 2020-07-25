@@ -7,3 +7,14 @@ services:
     ports:
       - "8000:8000"
     command: sh -c "./manage.py migrate && ./manage.py runserver 0.0.0.0:8000"
+
+  front:
+    build:
+      context: .
+      target: front
+    volumes:
+      - ./frontend:/srv/frontend/
+    ports:
+      - "3000:3000"
+    tty: true
+    command: sh -c "yarn --cwd /srv/frontend start"
